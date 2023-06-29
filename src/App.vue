@@ -15,10 +15,8 @@ button {
 </style>
 <script setup>
 function invokeDownload() {
-  let fallbackLink = "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk";
   document.getElementById('loader').src = "dpz2bf://";
-  fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
-    "https://down.ttiossign.com/#/join/6qWlf5";
+  let fallbackLink = getOS() === "ios" ? "https://down.ttiossign.com/#/join/6qWlf5" : "";
   window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
 }
 
