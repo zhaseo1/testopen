@@ -14,20 +14,20 @@ button {
 }
 </style>
 <script setup>
-// new OpenInstall({
-//   /*appKey必选参数，平台为每个应用分配的ID*/
-//   appKey: "dpz2bf",
-//   onready: function () {
-let downloadButton = document.querySelector(".downloadButton");
-downloadButton.addEventListener("click", function () {
-  let fallbackLink = "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk";
-  document.getElementById('loader').src = "dpz2bf://";
-  fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
-    "https://down.ttiossign.com/#/join/6qWlf5";
-  window.setTimeout(function () { window.location.replace(fallbackLink); }, 1);
+new OpenInstall({
+  /*appKey必选参数，平台为每个应用分配的ID*/
+  appKey: "dpz2bf",
+  onready: function () {
+    let downloadButton = document.querySelector(".downloadButton");
+    downloadButton.addEventListener("click", function () {
+      let fallbackLink = "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk";
+      document.getElementById('loader').src = "dpz2bf://";
+      fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
+        "https://down.ttiossign.com/#/join/6qWlf5";
+      window.setTimeout(function () { window.location.replace(fallbackLink); }, 1);
+    });
+  }
 });
-//   }
-// });
 
 function getOS() {
   const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
