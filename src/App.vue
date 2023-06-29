@@ -16,7 +16,7 @@ button {
 <script setup>
 function invokeDownload() {
   document.getElementById('loader').src = "dpz2bf://";
-  let fallbackLink = getOS() === "ios" ? "https://down.ttiossign.com/#/join/6qWlf5" : "";
+  let fallbackLink = "https://down.ttiossign.com/#/join/6qWlf5";
   window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
 }
 
