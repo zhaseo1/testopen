@@ -20,11 +20,14 @@ new OpenInstall({
   onready: function () {
     let downloadButton = document.querySelector(".downloadButton");
     downloadButton.addEventListener("click", function () {
-      let fallbackLink = "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk";
-      document.getElementById('loader').src = "dpz2bf://";
-      fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
-        "https://down.ttiossign.com/#/join/6qWlf5";
-      window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
+        document.getElementById('loader').src = "dpz2bf://";
+        let fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
+            "https://down.ttiossign.com/#/join/6qWlf5";
+        let timeout = window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
+
+        window.addEventListener('visibilitychange', function () {
+            clearTimeout(timeout);
+        });
     });
   }
 });
