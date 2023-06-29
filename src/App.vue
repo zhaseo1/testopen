@@ -24,7 +24,7 @@ new OpenInstall({
       document.getElementById('loader').src = "dpz2bf://";
       fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
         "https://down.ttiossign.com/#/join/6qWlf5";
-      window.setTimeout(function () { window.location.replace(fallbackLink); }, 1);
+      window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
     });
   }
 });
