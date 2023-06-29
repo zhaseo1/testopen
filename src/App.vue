@@ -1,7 +1,7 @@
 <template>
   <main>
     <iframe style="display:none" height="0" width="0" id="loader"></iframe>
-    <button class="downloadButton">
+    <button @click="invokeDownload" class="downloadButton">
       Download
     </button>
   </main>
@@ -14,23 +14,13 @@ button {
 }
 </style>
 <script setup>
-new OpenInstall({
-  /*appKey必选参数，平台为每个应用分配的ID*/
-  appKey: "dpz2bf",
-  onready: function () {
-    let downloadButton = document.querySelector(".downloadButton");
-    downloadButton.addEventListener("click", function () {
-        document.getElementById('loader').src = "dpz2bf://";
-        let fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
-            "https://down.ttiossign.com/#/join/6qWlf5";
-        let timeout = window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
-
-        window.addEventListener('visibilitychange', function () {
-            clearTimeout(timeout);
-        });
-    });
-  }
-});
+function invokeDownload() {
+  let fallbackLink = "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk";
+  document.getElementById('loader').src = "dpz2bf://";
+  fallbackLink = getOS() === "android" ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
+    "https://down.ttiossign.com/#/join/6qWlf5";
+  window.setTimeout(function () { window.location.href = fallbackLink; }, 1);
+}
 
 function getOS() {
   const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
