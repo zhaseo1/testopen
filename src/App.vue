@@ -18,20 +18,20 @@ new OpenInstall({
   /*appKey必选参数，平台为每个应用分配的ID*/
   appKey: "dpz2bf",
   onready: function () {
-    var m = this;
-    $(".downloadButton").click(function () {
+    let downloadButton = document.querySelector(".downloadButton");
+    downloadButton.addEventListener("click", function () {
       const isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod');
       const isAndroid = navigator.userAgent.match('Android');
 
       let fallbackLink = "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk";
       // Mobile
       if (isiOS || isAndroid) {
-        document.getElementById('loader').src = "dpz2bf://" + window.location.search + window.location.hash;
+        document.getElementById('loader').src = "dpz2bf://";
         fallbackLink = isAndroid ? "https://metatravers.oss-cn-hongkong.aliyuncs.com/app-release.apk" :
           "https://down.ttiossign.com/#/join/6qWlf5";
       }
       window.setTimeout(function () { window.location.replace(fallbackLink); }, 1);
-    })
+    });
   }
 });
 
